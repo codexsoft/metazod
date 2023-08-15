@@ -11,6 +11,7 @@
     "keywords": [],
     "author": "kozubskydmitry@gmail.com",
     "license": "MIT",
+    "files": ["build"],
     "dependencies": {
         "zod": "^3"
     },
