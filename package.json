@@ -1,0 +1,20 @@
+{
+    "name": "@codexsoft/metazod",
+    "version": "0.0.1",
+    "description": "",
+    "main": "build/index.js",
+    "scripts": {
+        "clean": "rm -rf build tsconfig.tsbuildinfo",
+        "build": "tsc --incremental",
+        "start:dev": "tsc -w --incremental"
+    },
+    "keywords": [],
+    "author": "kozubskydmitry@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "zod": "^3"
+    },
+    "devDependencies": {
+        "typescript": "^4.9.3 || ^5"
+    }
+}
