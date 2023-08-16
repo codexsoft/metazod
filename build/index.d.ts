@@ -6,8 +6,10 @@ declare module 'zod' {
         meta?: IMeta;
     }
     interface ZodType {
-        getMeta<T extends object = IMeta>(): T;
-        meta<T extends object = IMeta>(meta: T): this;
+        meta<T extends {}>(meta: T): this;
+        meta(meta: IMeta): this;
+        meta(): Partial<IMeta>;
+        meta<T extends {}>(): Partial<T>;
     }
 }
 export declare function register(zod: typeof z): void;

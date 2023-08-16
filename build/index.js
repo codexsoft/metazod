@@ -6,11 +6,14 @@ function register(zod) {
         return;
     }
     zod.ZodType.prototype.meta = function (meta) {
+        if (!meta) {
+            return this._def.meta;
+        }
         this._def.meta = Object.assign(Object.assign({}, this._def.meta), meta);
         return this;
     };
-    zod.ZodType.prototype.getMeta = function () {
-        return this._def.meta;
-    };
+    // zod.ZodType.prototype.getMeta = function () {
+    //     return this._def.meta;
+    // };
 }
 exports.register = register;

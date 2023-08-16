@@ -9,8 +9,11 @@ declare module 'zod' {
     }
 
     interface ZodType {
-        getMeta<T extends object = IMeta>(): T;
-        meta<T extends object = IMeta>(meta: T): this;
+        // getMeta<T extends object = IMeta>(): T;
+        meta<T extends {}>(meta: T): this;
+        meta(meta: IMeta): this;
+        meta(): Partial<IMeta>;
+        meta<T extends {}>(): Partial<T>;
     }
 }
 
@@ -19,12 +22,16 @@ export function register(zod: typeof z) {
         return;
     }
 
-    zod.ZodType.prototype.meta = function (meta: z.IMeta) {
+    zod.ZodType.prototype.meta = function (meta?: z.IMeta) {
+        if (!meta) {
+            return this._def.meta;
+        }
+
         this._def.meta = { ...this._def.meta, ...meta };
         return this;
     };
 
-    zod.ZodType.prototype.getMeta = function () {
-        return this._def.meta;
-    };
+    // zod.ZodType.prototype.getMeta = function () {
+    //     return this._def.meta;
+    // };
 }
