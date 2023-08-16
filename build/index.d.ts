@@ -6,7 +6,6 @@ declare module 'zod' {
         meta?: IMeta;
     }
     interface ZodType {
-        meta<T extends {}>(meta: T): this;
         meta(meta: IMeta): this;
         meta(): Partial<IMeta>;
         meta<T extends {}>(): Partial<T>;
